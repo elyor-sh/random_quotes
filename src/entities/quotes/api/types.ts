@@ -2,9 +2,6 @@ export type QuotesCreateParamsType = {
     text: string;
     author: string;
     genre: string[];
-    _uuid: string;
-    _created: string;
-    _modified: string;
 };
 
 export type QuotesType = {

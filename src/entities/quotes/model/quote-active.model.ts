@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { QuotesType } from '@/entities/quotes';
+import { createQuotesApi, QuotesType } from '@/entities/quotes';
 
 interface QuoteActiveState {
     quote: QuotesType;
@@ -26,9 +26,17 @@ export const activeQuoteSlice = createSlice({
         editActiveQuote: (state, action: PayloadAction<QuotesType>) => {
             state.quote = action.payload;
         },
+        refreshActiveQuote: (state) => {
+            state.quote = { ...initialQuoteFields };
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(createQuotesApi.fulfilled, (state) => {
+            state.quote = { ...initialQuoteFields };
+        })
     },
 });
 
-export const { editActiveQuote } = activeQuoteSlice.actions;
+export const { editActiveQuote, refreshActiveQuote } = activeQuoteSlice.actions;
 
 export default activeQuoteSlice.reducer;
