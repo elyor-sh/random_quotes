@@ -8,6 +8,7 @@ const Footer = () => {
                 className="text-blue-600 font-semibold px-1"
                 href="https://github.com/elyor-sh"
                 target="_blank"
+                rel="noreferrer"
             >
                 Elyor Shodiyorov
             </a>

@@ -29,11 +29,16 @@ http.interceptors.request.use(
         return config;
     },
     (error) => {
-        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Неопределенная ошибка', {
-            toastId: 'UploadReqError'
-        })
+        toast.error(
+            error?.response?.data?.message
+                ? error?.response?.data?.message
+                : 'Неопределенная ошибка',
+            {
+                toastId: 'UploadReqError',
+            }
+        );
         return Promise.reject(error);
-    },
+    }
 );
 
 // Response interceptor for API UPLOAD calls
@@ -43,9 +48,14 @@ http.interceptors.response.use(
     },
     (error) => {
         // localStorage.removeItem('token');
-        toast.error(error?.response?.data?.message ? error?.response?.data?.message : 'Неопределенная ошибка', {
-            toastId: 'UploadError'
-        })
+        toast.error(
+            error?.response?.data?.message
+                ? error?.response?.data?.message
+                : 'Неопределенная ошибка',
+            {
+                toastId: 'UploadError',
+            }
+        );
         return Promise.reject(error);
-    },
+    }
 );

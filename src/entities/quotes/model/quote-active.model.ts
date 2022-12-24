@@ -33,7 +33,7 @@ export const activeQuoteSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(createQuotesApi.fulfilled, (state) => {
             state.quote = { ...initialQuoteFields };
-        })
+        });
     },
 });
 

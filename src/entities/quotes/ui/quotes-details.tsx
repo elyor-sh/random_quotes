@@ -13,12 +13,15 @@ const QuotesDetails = () => {
         handleBack,
         handleSetGenre,
         handleRemoveFromGenre,
-        handleSubmit
+        handleSubmit,
     } = useQuoteDetails();
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="flex justify-between flex-wrap">
+            <form
+                onSubmit={handleSubmit}
+                className="flex justify-between flex-wrap"
+            >
                 <div className="pr-2 w-1/2">
                     <Input
                         required
@@ -56,7 +59,7 @@ const QuotesDetails = () => {
                             {genre}
                             <button
                                 className="bg-transparent hover focus:outline-none"
-                                onClick = {(e) => handleRemoveFromGenre(e, genre)}
+                                onClick={(e) => handleRemoveFromGenre(e, genre)}
                             >
                                 <svg
                                     aria-hidden="true"

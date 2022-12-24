@@ -6,8 +6,8 @@ const api_type = 'quotes';
 
 export const createQuotesApi = createAsyncThunk(
     'quotes/create',
-    async (params: QuotesCreateParamsType[], thunkAPI) => {
+    async (params: QuotesCreateParamsType[]) => {
         const response = await http.post(api_type, params);
-        return response.data
+        return response.data;
     }
-)
+);

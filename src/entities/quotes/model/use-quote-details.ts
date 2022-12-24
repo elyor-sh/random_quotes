@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
     createQuotesApi,
-    editActiveQuote, QuotesCreateParamsType,
+    editActiveQuote,
+    QuotesCreateParamsType,
     QuotesType,
     refreshActiveQuote,
 } from '@/entities/quotes';
@@ -53,17 +54,22 @@ export const useQuoteDetails = () => {
         dispatch(editActiveQuote(params));
     };
 
-    const handleRemoveFromGenre = (e: React.MouseEvent<HTMLButtonElement>, genre: string) => {
+    const handleRemoveFromGenre = (
+        e: React.MouseEvent<HTMLButtonElement>,
+        genre: string
+    ) => {
         e.preventDefault();
         e.stopPropagation();
 
         const params = {
             ...quote,
-            genre: quote.genre.filter(g => g.toLowerCase() !== genre.toLowerCase()),
+            genre: quote.genre.filter(
+                (g) => g.toLowerCase() !== genre.toLowerCase()
+            ),
         };
 
         dispatch(editActiveQuote(params));
-    }
+    };
 
     const handleBack = () => {
         dispatch(refreshActiveQuote());
@@ -71,24 +77,19 @@ export const useQuoteDetails = () => {
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-
-        e.preventDefault()
+        e.preventDefault();
 
         try {
-
             const params: QuotesCreateParamsType = {
                 text: quote.text,
                 genre: quote.genre,
-                author: quote.author
-            }
-            dispatch(createQuotesApi([params]))
+                author: quote.author,
+            };
+            dispatch(createQuotesApi([params]));
 
-      //      navigate(-1)
-
-        }catch (e) {
-
-        }
-    }
+            //      navigate(-1)
+        } catch (e) {}
+    };
 
     return {
         handleChange,
@@ -97,6 +98,6 @@ export const useQuoteDetails = () => {
         handleBack,
         handleSetGenre,
         handleRemoveFromGenre,
-        handleSubmit
+        handleSubmit,
     };
 };
