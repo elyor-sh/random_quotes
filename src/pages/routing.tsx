@@ -5,6 +5,8 @@ import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 import { QuotesPage } from '@/pages/quotes';
 import { QuotesDetailsPage } from '@/pages/quotes-details';
+import { AuthorsPage } from '@/pages/authors';
+import { GenresPage } from '@/pages/genres/ui';
 
 const Routing = () => {
     return (
@@ -23,6 +25,11 @@ const Routing = () => {
                     <Route
                         path="/quotes/details/:slug"
                         element={<QuotesDetailsPage />}
+                    />
+                    <Route path="/authors" element={<AuthorsPage />} />
+                    <Route
+                        path="/authors/:slug/genres"
+                        element={<GenresPage />}
                     />
                 </Route>
             </Routes>

@@ -28,6 +28,7 @@ const QuotesPage = () => {
                 </Button>
             </div>
             <div className="mt-2">
+                <p className="text-lg">Список цитат:</p>
                 <QuotesList />
             </div>
             <Suspense fallback={<></>}>
