@@ -6,17 +6,17 @@ import { useAppDispatch } from '@/store';
 const QuotesDetailsPage = () => {
     const { isCreatePage, slug: id } = useDetailPage('slug');
 
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if(!isCreatePage && id){
-            dispatch(getOneQuoteApi(id))
+        if (!isCreatePage && id) {
+            dispatch(getOneQuoteApi(id));
         }
-    }, [id, isCreatePage])
+    }, [id, isCreatePage]);
 
     return (
         <div className="container m-auto">
-            <QuotesDetails isCreate={isCreatePage}/>
+            <QuotesDetails isCreate={isCreatePage} />
         </div>
     );
 };

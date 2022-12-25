@@ -148,20 +148,37 @@ export const ViewButton: React.FC<IconButtonProps> = ({ ...rest }) => {
 };
 
 export const EditButton: React.FC<IconButtonProps> = ({ ...rest }) => {
-
     return (
         <button {...rest} className={`p-2 ${rest.className || ''}`}>
-            <svg width="20"
-                 height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <rect width="26" height="26" fill="url(#pattern0)"/>
+            <svg
+                width="20"
+                height="20"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+                <rect width="26" height="26" fill="url(#pattern0)" />
                 <defs>
-                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlinkHref="#image0_17_740" transform="scale(0.0104167)"/>
+                    <pattern
+                        id="pattern0"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                    >
+                        <use
+                            xlinkHref="#image0_17_740"
+                            transform="scale(0.0104167)"
+                        />
                     </pattern>
-                    <image id="image0_17_740" width="96" height="96" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAADyElEQVR4nO2cPUwUQRiG37kz4U4gJNbGkkYqE2NCIDHanDbXcTW1Ecq1krnYeNKAejWJjR6x0PhDiKU/jSUdiY2xNiEQFjTHWAyrJ/ezMzuzt3sz39Put/NNnjfMzW6YBQiCIAiCIAiC8A2W9QTyzMP11gJjbFlAzAD4AeDV0eThA764eGSrBwXQh8aT1goEePcV9jEs4ja/s3Bgo0/BxiCu0Vhv8d7yAUDMl9vYbjReT9roRX8BZ2istzgYVuIr2ReEY5UgqO6b9KMAOlCXH2EeAgVwir78CLMQKACYyI9IHoL3AZjLj0gWgtcB2JMfoR+Ct9tQTfnf1crELMpH73lzc0J1Hl4GoCn/M8LSDIB7ivVzOs8J3gWgKf9TWGSVIKjuB0u1BgTqareJWZSP3/GNjVJcpVcBJJB/q/OVQ7Bc4xohzJcPzt+Pq/ImgATLTs/3PcFyjUNxORIC1bgaLwLQkc+Ar9Gy068mLLIm1H6YL8YVOB+A7lZTANPjv9uX+13nzc2JcltsAbgUNxYDduJqnA4g4T5/6qRQ2F5de37t7IUO+XNqQ7G1uApnAzB8yOoKQVs+Aw+WFl7GlzmIxSfcPUBUCse/dsRY6a2AuK50FwMP7taUdkvOBWD/9QL2GLArgKtK1QL1052SEk4FoLvbEcA0gClrE9CUDzj0G6C7zxdh6SYriBsAflqZAAPXlS9vc4AED1m3on3+o6cvrogT9gHAhcQT0Fjzu28dcUzkRxiFYCBf3j7C2JAfkSgEQ/nACP8GJH2r2a/gkBV2GfBNeQICdVP5AHDOdIAsSPRiLaj2/Ueq1dVn46KNN8pbTQYeLJnLl0ONGDaXHeBUfkoPWWrDjRCuyZdDjgguypfDjgCuypdD5xyX5cvhc4zr8mWLnOKDfNkmh/giX7bKGT7Jl+1yhG/yZcuc4KN82TYH+Cpfts4Yn+XL9hniu3w5hYwg+dE0MoDk/2PoAZD8/xlqACS/m6EFQPJ7M5QASH5/Ug+A5A8m1QBIfjypBUDy1UglAJKvjvUASL4eVgMg+fpYC4DkJ8NKACQ/OcYBkHwzjAIg+eYkDoDk2yFRACTfHtoBkHy76B9RIvlWSeuMGMlXJI0ASL4G1g/phUVWGXQgjjc3J07aYgsQal8dEajbOhCXR6wHMOiz7h2nETU++eKufGCI54Rp2enNUAIg+f1JPQCSPxj9B7HHLZHGRAB4Jx/I07ciPJQP5CUAT+UDeQjAY/lA1gF4Lh/IMgCSDyCrAEj+X4YfAMknCIIgCIIgCIIgCIIgPOUPvMt1JnCL/MQAAAAASUVORK5CYII="/>
+                    <image
+                        id="image0_17_740"
+                        width="96"
+                        height="96"
+                        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAADyElEQVR4nO2cPUwUQRiG37kz4U4gJNbGkkYqE2NCIDHanDbXcTW1Ecq1krnYeNKAejWJjR6x0PhDiKU/jSUdiY2xNiEQFjTHWAyrJ/ezMzuzt3sz39Put/NNnjfMzW6YBQiCIAiCIAiC8A2W9QTyzMP11gJjbFlAzAD4AeDV0eThA764eGSrBwXQh8aT1goEePcV9jEs4ja/s3Bgo0/BxiCu0Vhv8d7yAUDMl9vYbjReT9roRX8BZ2istzgYVuIr2ReEY5UgqO6b9KMAOlCXH2EeAgVwir78CLMQKACYyI9IHoL3AZjLj0gWgtcB2JMfoR+Ct9tQTfnf1crELMpH73lzc0J1Hl4GoCn/M8LSDIB7ivVzOs8J3gWgKf9TWGSVIKjuB0u1BgTqareJWZSP3/GNjVJcpVcBJJB/q/OVQ7Bc4xohzJcPzt+Pq/ImgATLTs/3PcFyjUNxORIC1bgaLwLQkc+Ar9Gy068mLLIm1H6YL8YVOB+A7lZTANPjv9uX+13nzc2JcltsAbgUNxYDduJqnA4g4T5/6qRQ2F5de37t7IUO+XNqQ7G1uApnAzB8yOoKQVs+Aw+WFl7GlzmIxSfcPUBUCse/dsRY6a2AuK50FwMP7taUdkvOBWD/9QL2GLArgKtK1QL1052SEk4FoLvbEcA0gClrE9CUDzj0G6C7zxdh6SYriBsAflqZAAPXlS9vc4AED1m3on3+o6cvrogT9gHAhcQT0Fjzu28dcUzkRxiFYCBf3j7C2JAfkSgEQ/nACP8GJH2r2a/gkBV2GfBNeQICdVP5AHDOdIAsSPRiLaj2/Ueq1dVn46KNN8pbTQYeLJnLl0ONGDaXHeBUfkoPWWrDjRCuyZdDjgguypfDjgCuypdD5xyX5cvhc4zr8mWLnOKDfNkmh/giX7bKGT7Jl+1yhG/yZcuc4KN82TYH+Cpfts4Yn+XL9hniu3w5hYwg+dE0MoDk/2PoAZD8/xlqACS/m6EFQPJ7M5QASH5/Ug+A5A8m1QBIfjypBUDy1UglAJKvjvUASL4eVgMg+fpYC4DkJ8NKACQ/OcYBkHwzjAIg+eYkDoDk2yFRACTfHtoBkHy76B9RIvlWSeuMGMlXJI0ASL4G1g/phUVWGXQgjjc3J07aYgsQal8dEajbOhCXR6wHMOiz7h2nETU++eKufGCI54Rp2enNUAIg+f1JPQCSPxj9B7HHLZHGRAB4Jx/I07ciPJQP5CUAT+UDeQjAY/lA1gF4Lh/IMgCSDyCrAEj+X4YfAMknCIIgCIIgCIIgCIIgPOUPvMt1JnCL/MQAAAAASUVORK5CYII="
+                    />
                 </defs>
             </svg>
-
         </button>
-    )
-}
+    );
+};

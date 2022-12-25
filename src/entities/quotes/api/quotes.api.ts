@@ -24,23 +24,30 @@ export const getQuotesListApi = createAsyncThunk('quotes/getList', async () => {
     return response.data;
 });
 
-export const deleteQuotesApi = createAsyncThunk<string | undefined, string, {rejectValue: string}>('quotes/deleteApi', async (id: string, { rejectWithValue }) => {
+export const deleteQuotesApi = createAsyncThunk<
+    string | undefined,
+    string,
+    { rejectValue: string }
+>('quotes/deleteApi', async (id: string, { rejectWithValue }) => {
     try {
-       await http.delete(`${api_type}/${id}`);
-       return id
-    }catch (e) {
-        rejectWithValue('error')
+        await http.delete(`${api_type}/${id}`);
+        return id;
+    } catch (e) {
+        rejectWithValue('error');
     }
 });
 
-export const getOneQuoteApi = createAsyncThunk('quotes/getOneApi', async (id: string, {rejectWithValue}) => {
-     try {
-        const response = await http.get<QuotesType>(`${api_type}/${id}`);
-        return response.data
-    }catch (e) {
-        rejectWithValue('error')
+export const getOneQuoteApi = createAsyncThunk(
+    'quotes/getOneApi',
+    async (id: string, { rejectWithValue }) => {
+        try {
+            const response = await http.get<QuotesType>(`${api_type}/${id}`);
+            return response.data;
+        } catch (e) {
+            rejectWithValue('error');
+        }
     }
-});
+);
 
 export const updateQuotesApi = createAsyncThunk(
     'quotes/updateApi',
@@ -50,7 +57,10 @@ export const updateQuotesApi = createAsyncThunk(
         navigate: NavigateFunction;
     }) => {
         try {
-            const response = await http.put(`${api_type}/${params.id}`, params.params);
+            const response = await http.put(
+                `${api_type}/${params.id}`,
+                params.params
+            );
             params.navigate(-1);
             return response.data;
         } catch (e) {}

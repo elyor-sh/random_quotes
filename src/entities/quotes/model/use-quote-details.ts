@@ -6,7 +6,8 @@ import {
     editActiveQuote,
     QuotesCreateParamsType,
     QuotesType,
-    refreshActiveQuote, updateQuotesApi,
+    refreshActiveQuote,
+    updateQuotesApi,
 } from '@/entities/quotes';
 
 export const useQuoteDetails = () => {
@@ -76,7 +77,10 @@ export const useQuoteDetails = () => {
         navigate(-1);
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>, isCreate: boolean) => {
+    const handleSubmit = (
+        e: React.FormEvent<HTMLFormElement>,
+        isCreate: boolean
+    ) => {
         e.preventDefault();
 
         try {
@@ -86,10 +90,10 @@ export const useQuoteDetails = () => {
                 author: quote.author,
             };
 
-            if(isCreate){
+            if (isCreate) {
                 dispatch(createQuotesApi({ params, navigate }));
-            }else {
-                dispatch(updateQuotesApi({id: quote.id, params, navigate}))
+            } else {
+                dispatch(updateQuotesApi({ id: quote.id, params, navigate }));
             }
 
             //      navigate(-1)

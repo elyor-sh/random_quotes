@@ -9,7 +9,7 @@ import {
 
 export const useQuoteActions = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleView = (quote: QuotesType) => {
         dispatch(editActiveQuote(quote));
@@ -17,11 +17,11 @@ export const useQuoteActions = () => {
     };
 
     const handleEdit = (id: string) => {
-        navigate(`/quotes/details/${id}`)
+        navigate(`/quotes/details/${id}`);
     };
 
     const handleDelete = (id: string) => {
-        dispatch(deleteQuotesApi(id))
+        dispatch(deleteQuotesApi(id));
     };
 
     return {

@@ -4,7 +4,11 @@ import { Button } from '@/shared/ui';
 import { useAppDispatch } from '@/store';
 import { getQuotesListApi, QuotesList } from '@/entities/quotes';
 
-const QuotesViewLazy = lazy(() => import('../../../entities/quotes').then(res => ({default: res.QuotesView})))
+const QuotesViewLazy = lazy(() =>
+    import('../../../entities/quotes').then((res) => ({
+        default: res.QuotesView,
+    }))
+);
 
 const QuotesPage = () => {
     const navigate = useNavigate();

@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createQuotesApi, getOneQuoteApi, QuotesType, updateQuotesApi } from '@/entities/quotes';
+import {
+    createQuotesApi,
+    getOneQuoteApi,
+    QuotesType,
+    updateQuotesApi,
+} from '@/entities/quotes';
 
 interface QuoteActiveState {
     quote: QuotesType;
@@ -43,11 +48,14 @@ export const activeQuoteSlice = createSlice({
         builder.addCase(updateQuotesApi.fulfilled, (state) => {
             state.quote = { ...initialQuoteFields };
         });
-        builder.addCase(getOneQuoteApi.fulfilled, (state, action: PayloadAction<QuotesType | undefined>) => {
-            if(action.payload){
-                state.quote = action.payload
+        builder.addCase(
+            getOneQuoteApi.fulfilled,
+            (state, action: PayloadAction<QuotesType | undefined>) => {
+                if (action.payload) {
+                    state.quote = action.payload;
+                }
             }
-        });
+        );
     },
 });
 

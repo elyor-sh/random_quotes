@@ -4,14 +4,13 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { setOpenModalActiveQuote } from '@/entities/quotes';
 
 const QuotesView = () => {
-
-    const {openModal, quote} = useAppSelector(state => state.activeQuote)
-    const dispatch = useAppDispatch()
+    const { openModal, quote } = useAppSelector((state) => state.activeQuote);
+    const dispatch = useAppDispatch();
 
     return (
         <div>
             <Modal
-                title='Показ цитаты'
+                title="Показ цитаты"
                 open={openModal}
                 onClose={() => dispatch(setOpenModalActiveQuote(false))}
             >
@@ -21,4 +20,4 @@ const QuotesView = () => {
     );
 };
 
-export {QuotesView}
+export { QuotesView };

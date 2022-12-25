@@ -4,10 +4,10 @@ import { useAppSelector } from '@/store';
 import { useQuoteDetails } from '@/entities/quotes';
 
 export type QuotesDetailsProps = {
-    isCreate: boolean
-}
+    isCreate: boolean;
+};
 
-const QuotesDetails = ({isCreate}: QuotesDetailsProps) => {
+const QuotesDetails = ({ isCreate }: QuotesDetailsProps) => {
     const { quote } = useAppSelector((state) => state.activeQuote);
 
     const {
@@ -23,7 +23,7 @@ const QuotesDetails = ({isCreate}: QuotesDetailsProps) => {
     return (
         <>
             <form
-                onSubmit={e => handleSubmit(e, isCreate)}
+                onSubmit={(e) => handleSubmit(e, isCreate)}
                 className="flex justify-between flex-wrap"
             >
                 <div className="pr-2 w-1/2">
