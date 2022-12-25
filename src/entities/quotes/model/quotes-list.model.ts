@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { QuotesType } from '@/entities/quotes';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { deleteQuotesApi, getQuotesListApi, QuotesType } from '@/entities/quotes';
 
 interface QuotesListSlice {
     quotes: QuotesType[];
@@ -16,6 +16,22 @@ export const quotesListSlice = createSlice({
         refreshQuotesList: (state) => {
             state.quotes = [];
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(
+            getQuotesListApi.fulfilled,
+            (state, action: PayloadAction<QuotesType[]>) => {
+                state.quotes = action.payload;
+            }
+        );
+        builder.addCase(
+            deleteQuotesApi.fulfilled,
+            (state, action: PayloadAction<string | undefined>) => {
+                if(action.payload){
+                    state.quotes = state.quotes.filter(quote => quote.id !== action.payload)
+                }
+            }
+        );
     },
 });
 

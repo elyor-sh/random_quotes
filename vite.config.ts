@@ -8,13 +8,6 @@ export default defineConfig({
   server: {
     port: 3000,
     host: '127.0.0.1',
-    proxy: {
-      '/api': {
-        target: 'https://crudapi.co.uk',
-        changeOrigin: true,
-        secure: true,
-      }
-    }
   },
   resolve: {
     alias: {

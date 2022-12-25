@@ -3,7 +3,11 @@ import { Button, Input, Textarea } from '@/shared/ui';
 import { useAppSelector } from '@/store';
 import { useQuoteDetails } from '@/entities/quotes';
 
-const QuotesDetails = () => {
+export type QuotesDetailsProps = {
+    isCreate: boolean
+}
+
+const QuotesDetails = ({isCreate}: QuotesDetailsProps) => {
     const { quote } = useAppSelector((state) => state.activeQuote);
 
     const {
@@ -19,7 +23,7 @@ const QuotesDetails = () => {
     return (
         <>
             <form
-                onSubmit={handleSubmit}
+                onSubmit={e => handleSubmit(e, isCreate)}
                 className="flex justify-between flex-wrap"
             >
                 <div className="pr-2 w-1/2">

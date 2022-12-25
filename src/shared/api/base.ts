@@ -23,9 +23,6 @@ export const http = axios.create({
 // Request interceptor for API UPLOAD calls
 http.interceptors.request.use(
     async (config: AxiosRequestConfig) => {
-        if (config.headers) {
-            config.headers['Authorization'] = 'Bearer ' + env.VITE_API_KEY;
-        }
         return config;
     },
     (error) => {

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export const useDetailPage = (slug: string) => {
-    const [isCreate, setIsCreate] = useState(false);
+    const [isCreate, setIsCreate] = useState(true);
     const [isEdit, setIsEdit] = useState(false);
 
     const params = useParams();

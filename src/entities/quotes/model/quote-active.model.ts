@@ -1,22 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createQuotesApi, QuotesType } from '@/entities/quotes';
+import { createQuotesApi, getOneQuoteApi, QuotesType, updateQuotesApi } from '@/entities/quotes';
 
 interface QuoteActiveState {
     quote: QuotesType;
+    openModal: boolean;
 }
 
 const initialQuoteFields: QuotesType = {
-    _uuid: '',
+    id: '',
     author: '',
     text: '',
     genre: [],
-    _created: '',
-    _modified: '',
+    createdAt: '',
+    updatedAt: '',
 };
 
 const initialState: QuoteActiveState = {
     quote: { ...initialQuoteFields },
+    openModal: false,
 };
 
 export const activeQuoteSlice = createSlice({
@@ -28,15 +30,28 @@ export const activeQuoteSlice = createSlice({
         },
         refreshActiveQuote: (state) => {
             state.quote = { ...initialQuoteFields };
+            state.openModal = false;
+        },
+        setOpenModalActiveQuote: (state, action: PayloadAction<boolean>) => {
+            state.openModal = action.payload;
         },
     },
     extraReducers: (builder) => {
         builder.addCase(createQuotesApi.fulfilled, (state) => {
             state.quote = { ...initialQuoteFields };
         });
+        builder.addCase(updateQuotesApi.fulfilled, (state) => {
+            state.quote = { ...initialQuoteFields };
+        });
+        builder.addCase(getOneQuoteApi.fulfilled, (state, action: PayloadAction<QuotesType | undefined>) => {
+            if(action.payload){
+                state.quote = action.payload
+            }
+        });
     },
 });
 
-export const { editActiveQuote, refreshActiveQuote } = activeQuoteSlice.actions;
+export const { editActiveQuote, refreshActiveQuote, setOpenModalActiveQuote } =
+    activeQuoteSlice.actions;
 
 export default activeQuoteSlice.reducer;
