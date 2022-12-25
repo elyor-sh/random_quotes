@@ -2,8 +2,8 @@ export type QuotesCreateParamsType = {
     text: string;
     author: string;
     genre: string[];
-    updatedAt: string
-    createdAt: string
+    updatedAt: string;
+    createdAt: string;
 };
 
 export type QuotesType = {

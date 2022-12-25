@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const DeleteButton: React.FC<IconButtonProps> = ({ ...rest }) => {
     return (

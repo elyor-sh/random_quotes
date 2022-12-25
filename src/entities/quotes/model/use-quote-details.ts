@@ -88,7 +88,6 @@ export const useQuoteDetails = () => {
         e.preventDefault();
 
         try {
-
             const now = new Date().toISOString();
 
             const params: QuotesCreateParamsType = {
@@ -96,7 +95,7 @@ export const useQuoteDetails = () => {
                 genre: quote.genre,
                 author: quote.author,
                 createdAt: isCreate ? now : quote.createdAt,
-                updatedAt: now
+                updatedAt: now,
             };
 
             if (isCreate) {

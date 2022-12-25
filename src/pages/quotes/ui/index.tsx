@@ -17,7 +17,7 @@ const QuotesPage = () => {
 
     useEffect(() => {
         dispatch(getQuotesListApi());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="container m-auto py-2">

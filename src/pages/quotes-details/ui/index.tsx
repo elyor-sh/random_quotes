@@ -12,7 +12,7 @@ const QuotesDetailsPage = () => {
         if (!isCreatePage && id) {
             dispatch(getOneQuoteApi(id));
         }
-    }, [id, isCreatePage]);
+    }, [id, isCreatePage, dispatch]);
 
     return (
         <div className="container m-auto">

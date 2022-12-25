@@ -32,7 +32,7 @@ const QuoteFilters = () => {
                     value={filters.genre}
                     onChange={handleChangeFilterField}
                 >
-                    <option value=''>Не выбран жанр</option>
+                    <option value="">Не выбран жанр</option>
                     {cachedQuotes.map((quote) => {
                         return quote.genre.map((genre) => (
                             <option key={genre} value={genre}>
@@ -44,18 +44,18 @@ const QuoteFilters = () => {
             </div>
             <div className="w-1/5 pr-1.5 pb-3">
                 <Input
-                    name='createdAt'
-                    type='datetime-local'
-                    placeholder='Выберите дату создания'
+                    name="createdAt"
+                    type="datetime-local"
+                    placeholder="Выберите дату создания"
                     value={filters.createdAt}
                     onChange={handleChangeFilterField}
                 />
             </div>
             <div className="w-1/5 pr-1.5 pb-3">
                 <Input
-                    name='updatedAt'
-                    type='datetime-local'
-                    placeholder='Выберите дату обновления'
+                    name="updatedAt"
+                    type="datetime-local"
+                    placeholder="Выберите дату обновления"
                     value={filters.updatedAt}
                     onChange={handleChangeFilterField}
                 />

@@ -7,13 +7,10 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 const Select = ({ children, ...rest }: SelectProps) => {
     return (
-        <select
-            {...rest}
-            className="base-select"
-        >
+        <select {...rest} className="base-select">
             {children}
         </select>
     );
 };
 
-export {Select};
+export { Select };

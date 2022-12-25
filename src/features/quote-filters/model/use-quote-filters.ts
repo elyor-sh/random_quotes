@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import { useDebounce } from '@/shared/lib';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { setFilteredQuotesList } from '@/entities/quotes';
@@ -22,7 +22,7 @@ export const useQuoteFilters = () => {
         genre: '',
         text: '',
         createdAt: '',
-        updatedAt: ''
+        updatedAt: '',
     });
 
     const authorDeb = useDebounce(filters.author);
@@ -44,12 +44,12 @@ export const useQuoteFilters = () => {
     };
 
     const checkDate = (date1: string, date2: string) => {
-        if(!date1 || !date2){
-            return true
+        if (!date1 || !date2) {
+            return true;
         }
 
-        return dayjs(date1).isBefore(date2)
-    }
+        return dayjs(date1).isBefore(date2);
+    };
 
     const filteredQuotes = useMemo(() => {
         return cachedQuotes.filter((quote) => {
@@ -67,13 +67,21 @@ export const useQuoteFilters = () => {
             if (isConditional) {
                 return quote;
             }
-        });
-    }, [authorDeb, textDeb, genreDeb, createdAtDeb, updatedAtDeb]);
 
+            return false;
+        });
+    }, [
+        authorDeb,
+        textDeb,
+        genreDeb,
+        createdAtDeb,
+        updatedAtDeb,
+        cachedQuotes,
+    ]);
 
     useEffect(() => {
         dispatch(setFilteredQuotesList(filteredQuotes));
-    }, [filteredQuotes]);
+    }, [filteredQuotes, dispatch]);
 
     return {
         filters,
