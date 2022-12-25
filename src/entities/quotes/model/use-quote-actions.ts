@@ -6,10 +6,13 @@ import {
     QuotesType,
     setOpenModalActiveQuote,
 } from '@/entities/quotes';
+import { useState } from 'react';
 
 export const useQuoteActions = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+    const [openConfirm, setOpenConfirm] = useState(false);
 
     const handleView = (quote: QuotesType) => {
         dispatch(editActiveQuote(quote));
@@ -21,6 +24,7 @@ export const useQuoteActions = () => {
     };
 
     const handleDelete = (id: string) => {
+        setOpenConfirm(false);
         dispatch(deleteQuotesApi(id));
     };
 
@@ -28,5 +32,7 @@ export const useQuoteActions = () => {
         handleView,
         handleDelete,
         handleEdit,
+        openConfirm,
+        setOpenConfirm,
     };
 };

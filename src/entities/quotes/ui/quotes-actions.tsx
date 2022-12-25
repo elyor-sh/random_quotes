@@ -1,5 +1,11 @@
 import React from 'react';
-import { DeleteButton, EditButton, ViewButton } from '@/shared/ui';
+import {
+    Button,
+    DeleteButton,
+    EditButton,
+    Modal,
+    ViewButton,
+} from '@/shared/ui';
 import { QuotesType, useQuoteActions } from '@/entities/quotes';
 
 export type QuotesActionsProps = {
@@ -7,7 +13,13 @@ export type QuotesActionsProps = {
 };
 
 const QuotesActions = ({ quote }: QuotesActionsProps) => {
-    const { handleView, handleDelete, handleEdit } = useQuoteActions();
+    const {
+        handleView,
+        handleDelete,
+        handleEdit,
+        openConfirm,
+        setOpenConfirm,
+    } = useQuoteActions();
 
     return (
         <div className="flex justify-end w-1/12">
@@ -17,12 +29,34 @@ const QuotesActions = ({ quote }: QuotesActionsProps) => {
             />
             <DeleteButton
                 className="mr-1 hover:bg-gray-200 rounded-full"
-                onClick={() => handleDelete(quote.id)}
+                onClick={() => setOpenConfirm(true)}
             />
             <EditButton
                 className="mr-1 hover:bg-gray-200 rounded-full"
                 onClick={() => handleEdit(quote.id)}
             />
+
+            <Modal
+                open={openConfirm}
+                onClose={() => setOpenConfirm(false)}
+                title="Подтвердите удаление цитаты"
+            >
+                <div className="flex justify-end">
+                    <Button
+                        variant="dark"
+                        onClick={() => setOpenConfirm(false)}
+                    >
+                        Отменить
+                    </Button>
+                    <Button
+                        variant="success"
+                        onClick={() => handleDelete(quote.id)}
+                        className="ml-3"
+                    >
+                        Подтвердить
+                    </Button>
+                </div>
+            </Modal>
         </div>
     );
 };

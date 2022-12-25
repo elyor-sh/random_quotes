@@ -9,6 +9,7 @@ import {
     refreshActiveQuote,
     updateQuotesApi,
 } from '@/entities/quotes';
+import { toast } from 'react-toastify';
 
 export const useQuoteDetails = () => {
     const dispatch = useAppDispatch();
@@ -42,6 +43,9 @@ export const useQuoteDetails = () => {
                 (genre) => genre.toLowerCase() === genreState.toLowerCase()
             )
         ) {
+            toast.info(`Такой жанр уже существует в списке жанров!`, {
+                toastId: 'genre duplicate',
+            });
             return;
         }
 
@@ -84,10 +88,15 @@ export const useQuoteDetails = () => {
         e.preventDefault();
 
         try {
+
+            const now = new Date().toISOString();
+
             const params: QuotesCreateParamsType = {
                 text: quote.text,
                 genre: quote.genre,
                 author: quote.author,
+                createdAt: isCreate ? now : quote.createdAt,
+                updatedAt: now
             };
 
             if (isCreate) {

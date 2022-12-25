@@ -7,10 +7,12 @@ import {
 
 interface QuotesListSlice {
     quotes: QuotesType[];
+    cachedQuotes: QuotesType[];
 }
 
 const initialState: QuotesListSlice = {
     quotes: [],
+    cachedQuotes: [],
 };
 
 export const quotesListSlice = createSlice({
@@ -19,6 +21,10 @@ export const quotesListSlice = createSlice({
     reducers: {
         refreshQuotesList: (state) => {
             state.quotes = [];
+            state.cachedQuotes = [];
+        },
+        setFilteredQuotesList: (state, action: PayloadAction<QuotesType[]>) => {
+            state.quotes = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -26,6 +32,7 @@ export const quotesListSlice = createSlice({
             getQuotesListApi.fulfilled,
             (state, action: PayloadAction<QuotesType[]>) => {
                 state.quotes = action.payload;
+                state.cachedQuotes = action.payload;
             }
         );
         builder.addCase(
@@ -35,12 +42,16 @@ export const quotesListSlice = createSlice({
                     state.quotes = state.quotes.filter(
                         (quote) => quote.id !== action.payload
                     );
+                    state.cachedQuotes = state.cachedQuotes.filter(
+                        (quote) => quote.id !== action.payload
+                    );
                 }
             }
         );
     },
 });
 
-export const { refreshQuotesList } = quotesListSlice.actions;
+export const { refreshQuotesList, setFilteredQuotesList } =
+    quotesListSlice.actions;
 
 export default quotesListSlice.reducer;
