@@ -1,5 +1,6 @@
 import React, { AllHTMLAttributes } from 'react';
 import './style.css';
+import { useWroteCheck } from '@/shared/lib';
 
 export interface TextareaProps extends AllHTMLAttributes<HTMLTextAreaElement> {
     error?: boolean;
@@ -7,16 +8,27 @@ export interface TextareaProps extends AllHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const Textarea = ({ error, errorText, ...rest }: TextareaProps) => {
+    const { isWrote, handleChangeWrote } = useWroteCheck();
+
+    const handleChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
+        if (rest.onChange) {
+            rest?.onChange(e);
+        }
+
+        handleChangeWrote();
+    };
+
     return (
         <div className="w-full">
             <textarea
                 {...rest}
+                onChange={handleChange}
                 className={`${rest.className || ''} base-textarea ${
-                    error ? 'error' : ''
+                    isWrote && error ? 'error' : ''
                 }`}
             />
             <span className="text-red-400 text-xs py-1">
-                {error && errorText}
+                {isWrote ? error && errorText : ''}
             </span>
         </div>
     );

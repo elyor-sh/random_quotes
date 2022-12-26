@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
@@ -8,6 +8,7 @@ import {
     QuotesType,
     refreshActiveQuote,
     updateQuotesApi,
+    ValidateQuoteParams,
 } from '@/entities/quotes';
 import { toast } from 'react-toastify';
 
@@ -18,6 +19,18 @@ export const useQuoteDetails = () => {
     const { quote } = useAppSelector((state) => state.activeQuote);
 
     const [genreState, setGenreState] = useState('');
+
+    const validText = useMemo(() => {
+        return ValidateQuoteParams.text(quote.text);
+    }, [quote.text]);
+
+    const validGenre = useMemo(() => {
+        return ValidateQuoteParams.genre(quote.genre);
+    }, [quote.genre]);
+
+    const validAuthor = useMemo(() => {
+        return ValidateQuoteParams.author(quote.author);
+    }, [quote.author]);
 
     const handleChange = (
         e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -116,5 +129,10 @@ export const useQuoteDetails = () => {
         handleSetGenre,
         handleRemoveFromGenre,
         handleSubmit,
+        valid: {
+            text: validText,
+            genre: validGenre,
+            author: validAuthor,
+        },
     };
 };

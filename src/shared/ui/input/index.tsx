@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import './style.css';
+import { useWroteCheck } from '@/shared/lib';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     errorText?: string;
@@ -7,16 +8,27 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({ errorText = '', error = false, ...rest }: InputProps) => {
+    const { isWrote, handleChangeWrote } = useWroteCheck();
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (rest.onChange) {
+            rest?.onChange(e);
+        }
+
+        handleChangeWrote();
+    };
+
     return (
         <label className="w-full">
             <input
                 {...rest}
+                onChange={handleChange}
                 className={`${rest.className || ''} base-input ${
-                    error ? 'error' : ''
+                    isWrote && error ? 'error' : ''
                 }`}
             />
             <span className="text-red-400 text-xs py-1">
-                {error && errorText}
+                {isWrote ? error && errorText : ''}
             </span>
         </label>
     );

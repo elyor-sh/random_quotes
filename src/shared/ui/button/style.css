@@ -23,6 +23,7 @@
 
     .circle {
         @apply bg-blue-700 hover:bg-blue-800 active:bg-blue-700 focus:bg-blue-700 pt-2 pb-2 pr-4 pl-4 rounded-full;
+        height: 38px;
     }
 
     .disabled {

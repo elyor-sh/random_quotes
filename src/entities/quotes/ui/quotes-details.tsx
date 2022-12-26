@@ -18,6 +18,7 @@ const QuotesDetails = ({ isCreate }: QuotesDetailsProps) => {
         handleSetGenre,
         handleRemoveFromGenre,
         handleSubmit,
+        valid,
     } = useQuoteDetails();
 
     return (
@@ -33,6 +34,8 @@ const QuotesDetails = ({ isCreate }: QuotesDetailsProps) => {
                         placeholder="Автор"
                         value={quote.author}
                         onChange={handleChange}
+                        error={valid.author.error}
+                        errorText={valid.author.message}
                     />
                 </div>
                 <div className="pl-2 w-1/2 flex justify-between">
@@ -41,6 +44,8 @@ const QuotesDetails = ({ isCreate }: QuotesDetailsProps) => {
                         placeholder="Жанры"
                         value={genreState}
                         onChange={(e) => setGenreState(e.currentTarget.value)}
+                        error={valid.genre.error}
+                        errorText={valid.genre.message}
                     />
                     <Button
                         variant="circle"
@@ -91,13 +96,24 @@ const QuotesDetails = ({ isCreate }: QuotesDetailsProps) => {
                         placeholder="Текст цитаты"
                         value={quote.text}
                         onChange={handleChange}
+                        error={valid.text.error}
+                        errorText={valid.text.message}
                     />
                 </div>
                 <div className="pt-4 w-full flex">
                     <Button variant="dark" onClick={handleBack}>
                         Назад
                     </Button>
-                    <Button variant="success" type="submit" className="ml-2">
+                    <Button
+                        variant="success"
+                        type="submit"
+                        className="ml-2"
+                        disabled={
+                            valid.text.error ||
+                            valid.genre.error ||
+                            valid.author.error
+                        }
+                    >
                         Сохранить
                     </Button>
                 </div>
