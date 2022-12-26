@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm lint && tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:watch": "onchange \"src/**/*.{js,jsx,ts,tsx}\" -- prettier --write --ignore-unknown {{changed}}",
