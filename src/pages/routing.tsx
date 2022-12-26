@@ -6,7 +6,8 @@ import { Footer } from '@/widgets/footer';
 import { QuotesPage } from '@/pages/quotes';
 import { QuotesDetailsPage } from '@/pages/quotes-details';
 import { AuthorsPage } from '@/pages/authors';
-import { GenresPage } from '@/pages/genres/ui';
+import { GenresPage } from '@/pages/genres';
+import { RandomQuotePage } from '@/pages/random-quote';
 
 const Routing = () => {
     return (
@@ -25,6 +26,10 @@ const Routing = () => {
                     <Route
                         path="/quotes/details/:slug"
                         element={<QuotesDetailsPage />}
+                    />
+                    <Route
+                        path="/quotes/random"
+                        element={<RandomQuotePage />}
                     />
                     <Route path="/authors" element={<AuthorsPage />} />
                     <Route

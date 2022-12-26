@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '@/store';
-import { getQuotesListApi } from '@/entities/quotes';
+import { getQuotesListApi, refreshQuotesList } from '@/entities/quotes';
 import { AuthorsList } from '@/entities/authors';
 
 const AuthorsPage = () => {
@@ -8,6 +8,9 @@ const AuthorsPage = () => {
 
     useEffect(() => {
         dispatch(getQuotesListApi());
+        return () => {
+            dispatch(refreshQuotesList());
+        };
     }, [dispatch]);
 
     return (

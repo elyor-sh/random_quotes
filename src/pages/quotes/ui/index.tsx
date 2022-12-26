@@ -2,7 +2,11 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/shared/ui';
 import { useAppDispatch } from '@/store';
-import { getQuotesListApi, QuotesList } from '@/entities/quotes';
+import {
+    getQuotesListApi,
+    QuotesList,
+    refreshQuotesList,
+} from '@/entities/quotes';
 import { QuoteFilters } from '@/features/quote-filters';
 
 const QuotesViewLazy = lazy(() =>
@@ -17,6 +21,9 @@ const QuotesPage = () => {
 
     useEffect(() => {
         dispatch(getQuotesListApi());
+        return () => {
+            dispatch(refreshQuotesList());
+        };
     }, [dispatch]);
 
     return (

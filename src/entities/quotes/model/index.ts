@@ -6,3 +6,4 @@ export { default as quotesListReducer } from './quotes-list.model';
 
 export * from './use-quote-details';
 export * from './use-quote-actions';
+export * from './use-random-quote';

@@ -7,9 +7,11 @@ const Header = () => {
             <Link className="text-lg text-white" to="/quotes">
                 Цитаты
             </Link>
-
             <Link className="text-lg text-white pl-5" to="/authors">
                 Список авторов
+            </Link>
+            <Link className="text-lg text-white pl-5" to="/quotes/random">
+                Рандомная цитата
             </Link>
         </nav>
     );

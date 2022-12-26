@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDetailPage } from '@/shared/lib';
-import { getOneQuoteApi, QuotesDetails } from '@/entities/quotes';
+import {
+    getOneQuoteApi,
+    QuotesDetails,
+    refreshActiveQuote,
+} from '@/entities/quotes';
 import { useAppDispatch } from '@/store';
 
 const QuotesDetailsPage = () => {
@@ -12,6 +16,10 @@ const QuotesDetailsPage = () => {
         if (!isCreatePage && id) {
             dispatch(getOneQuoteApi(id));
         }
+
+        return () => {
+            dispatch(refreshActiveQuote());
+        };
     }, [id, isCreatePage, dispatch]);
 
     return (
